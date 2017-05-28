@@ -1,12 +1,16 @@
-package me.ezeh.nirct;
+package me.ezeh.nirct.examples;
 
-public class Main {
+import me.ezeh.nirct.IrcClient;
+import me.ezeh.nirct.examples.LetterCounter;
+import me.ezeh.nirct.protocol.IrcConnection;
+
+public class EcounterExample{
     public static void main(String[] args) {
         String ip = "127.0.0.1";
         String channel = "#test";
         int port = 6667;
         final IrcClient client = new IrcClient(new IrcConnection(ip, port));
-        client.addListener(new LetterCounter());
+        client.addListener(new LetterCounter('e'));
         client.setLog(true);
         client.start();
         client.setNick("eCountear");

@@ -1,4 +1,4 @@
-package me.ezeh.nirct
+package me.ezeh.nirct.tools
 
 object Strings {
     fun countChar(str: String, sub: Char): Int {

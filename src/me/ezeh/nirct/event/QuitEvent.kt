@@ -1,4 +1,4 @@
-package me.ezeh.nirct
+package me.ezeh.nirct.event
 
 /**
  * Created by sam on 24/01/17.

@@ -1,4 +1,4 @@
-package me.ezeh.nirct
+package me.ezeh.nirct.protocol
 
 import java.io.BufferedReader
 import java.io.BufferedWriter
@@ -11,19 +11,19 @@ import java.net.Socket
 class IrcConnection {
     val ip: String
     val port: Int
-    private val socket: java.net.Socket
-    private var bw: java.io.BufferedWriter? = null
-    private var br: java.io.BufferedReader? = null
+    private val socket: Socket
+    private var bw: BufferedWriter? = null
+    private var br: BufferedReader? = null
 
 
     constructor(ip: String, port: Int) {
         this.ip = ip
         this.port = port
-        socket = java.net.Socket(ip, port)
+        socket = Socket(ip, port)
         setup()
     }
 
-    constructor(socket: java.net.Socket) {
+    constructor(socket: Socket) {
         ip = socket.inetAddress.hostAddress
         port = socket.port
         assert(socket.isConnected)
@@ -36,9 +36,9 @@ class IrcConnection {
 
     fun setup() {
         try {
-            this.bw = java.io.BufferedWriter(java.io.OutputStreamWriter(this.socket.getOutputStream()))
-            this.br = java.io.BufferedReader(java.io.InputStreamReader(this.socket.getInputStream()))
-        } catch (e: java.lang.Exception) {
+            this.bw = BufferedWriter(OutputStreamWriter(this.socket.getOutputStream()))
+            this.br = BufferedReader(InputStreamReader(this.socket.getInputStream()))
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 
@@ -49,7 +49,7 @@ class IrcConnection {
             println("Request: " + text)
             bw?.write(text + "\r\n")
             bw?.flush()
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 
@@ -59,7 +59,7 @@ class IrcConnection {
         try {
 
             return br?.readLine()
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
             return ""
         }

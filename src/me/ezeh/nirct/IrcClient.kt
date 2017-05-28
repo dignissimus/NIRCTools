@@ -1,5 +1,8 @@
 package me.ezeh.nirct
 
+import me.ezeh.nirct.event.ChatEvent
+import me.ezeh.nirct.protocol.IrcConnection
+import me.ezeh.nirct.protocol.IrcResponse
 import java.util.regex.Pattern
 
 
@@ -136,7 +139,7 @@ class IrcClient(var connection: IrcConnection) {
             println(source)
             val sendNICK = source.split("!~".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
             val sendUser = source.split("@".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0].split("!~".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
-            callChatEvent(me.ezeh.nirct.ChatEvent(this, sendNICK, args.subList(1, args.size).joinToString(" "), args[0]))
+            callChatEvent(ChatEvent(this, sendNICK, args.subList(1, args.size).joinToString(" "), args[0]))
         }
         if (cmd == "QUIT") {
             //user has left

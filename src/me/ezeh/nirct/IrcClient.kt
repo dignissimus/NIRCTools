@@ -46,7 +46,7 @@ class IrcClient(var connection: IrcConnection) {
             parameters += " "
             if (arg.contains(' ')) parameters += ":$arg:" else parameters += arg
         }
-        connection.sendText("$cmd ${parameters.substring(0)}") // Substring to remove the first space
+        connection.sendText("$cmd ${parameters.substring(1)}") // Substring to remove the first space
     }
 
     fun me(action: String, person: String) {

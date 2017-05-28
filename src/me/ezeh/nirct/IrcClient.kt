@@ -13,11 +13,11 @@ class IrcClient(var connection: IrcConnection) {
     var log: Boolean = true
     var listeners: MutableList<Listener> = ArrayList()
     private val loginListeners = ArrayList<() -> Any>()
-    private var name: String? = null
-    private var user: String? = null
-    private var pass: CharArray? = null
-    private var nick: String? = null
-    fun getNick(): String? {
+    private var name: String = "NIRCTools"
+    private var user: String = "NIRCTools"
+    private var pass: CharArray = CharArray(0)
+    private var nick: String = "NIRCTools"
+    fun getNick(): String {
         return nick
     }
 

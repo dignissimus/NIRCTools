@@ -50,7 +50,7 @@ class IrcClient(var connection: IrcConnection) {
     }
 
     fun me(action: String, person: String) {
-        sendMessage(String.format("\u0001ACTION %s\u0001", action), person)
+        sendMessage("\u0001ACTION $action\u0001", person)
     }
 
     fun setNick(nick: String) {

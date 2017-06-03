@@ -7,7 +7,7 @@ import me.ezeh.nirct.event.QuitEvent
 
 open class Listener {
     open fun onChat(event: ChatEvent) {}
-    fun onDisconnect(event: DisconnectEvent) {}
-    fun onJoin(event: QuitEvent) {}
+    open fun onDisconnect(event: DisconnectEvent) {}
+    open fun onJoin(event: QuitEvent) {}
 
 }

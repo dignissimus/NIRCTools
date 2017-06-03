@@ -1,10 +1,9 @@
 package me.ezeh.nirct.examples;
 
 import me.ezeh.nirct.IrcClient;
-import me.ezeh.nirct.examples.LetterCounter;
 import me.ezeh.nirct.protocol.IrcConnection;
 
-public class EcounterExample{
+public class EcounterExample {
     public static void main(String[] args) {
         String ip = "127.0.0.1";
         final String channel = "#test";

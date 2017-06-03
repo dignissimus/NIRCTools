@@ -129,8 +129,6 @@ class IrcClient(var connection: IrcConnection) {
     fun process(response: IrcResponse) {
         val cmd = response.command.toLowerCase()
         val source = response.source.substring(1)// This is because the source should start with a colon, I don't want the colon, therefore I remove the colon using String#substring
-        //Used to be used, Now the bot is expanding //if (!source.contains("!")) return
-        //System.out.println("NICK: "+sendNICK+"\tText: "+response.EA+"\tName: "+response.FA[0]);
         val args = ArrayList<String>(response.args.asList())
         if (cmd == "001") {
             runLoginHooks()

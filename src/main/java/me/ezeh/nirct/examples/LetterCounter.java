@@ -1,4 +1,4 @@
-package me.ezeh.nirct.examples;
+package main.java.me.ezeh.nirct.examples;
 
 import me.ezeh.nirct.Listener;
 import me.ezeh.nirct.tools.Strings;

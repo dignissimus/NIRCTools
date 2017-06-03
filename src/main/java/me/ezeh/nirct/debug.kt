@@ -1,7 +1,5 @@
 package me.ezeh.nirct
 
-import me.ezeh.nirct.examples.LetterCounter
-
 fun main(args: Array<String>) {
     val client = IrcClient("irc.spi.gt", 6667)
     client.log = false

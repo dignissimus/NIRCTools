@@ -1,4 +1,4 @@
-package main.java.me.ezeh.nirct.examples;
+package me.ezeh.nirct.examples;
 
 import me.ezeh.nirct.IrcClient;
 import me.ezeh.nirct.examples.LetterCounter;
@@ -7,7 +7,7 @@ import me.ezeh.nirct.protocol.IrcConnection;
 public class EcounterExample{
     public static void main(String[] args) {
         String ip = "127.0.0.1";
-        String channel = "#test";
+        final String channel = "#test";
         int port = 6667;
         final IrcClient client = new IrcClient(new IrcConnection(ip, port));
         client.addListener(new LetterCounter('e'));
@@ -16,7 +16,6 @@ public class EcounterExample{
         client.setNick("eCountear");
         client.setUser("eCounter 8 * :eCounter@NIRCTools");
         client.addLoginHook(new Runnable() {
-            @Override
             public void run() {
                 client.joinChannel(channel);
 
@@ -26,7 +25,6 @@ public class EcounterExample{
             }
         });
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
             public void run() {
                 client.command("QUIT", "eCounter@SpiderBot Shutting down... IRCUL8r");
                 System.out.println("Said bye!");

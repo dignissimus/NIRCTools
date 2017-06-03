@@ -1,4 +1,4 @@
-package main.java.me.ezeh.nirct.examples;
+package me.ezeh.nirct.examples;
 
 import me.ezeh.nirct.Listener;
 import me.ezeh.nirct.tools.Strings;
@@ -7,10 +7,10 @@ import org.jetbrains.annotations.NotNull;
 
 
 public class LetterCounter extends Listener {
-    LetterCounter(char letter){
+    public LetterCounter(char letter){
         this.letter = letter;
     }
-    LetterCounter(){
+    public LetterCounter(){
 
     }
     private int count;

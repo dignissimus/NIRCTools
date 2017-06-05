@@ -65,7 +65,7 @@ class IrcClient(val connection: IrcConnection) {
 
     fun setUser(name: String) {
         this.user = name
-        commans("USER", name)
+        command("USER", name)
     }
 
     fun setPass(pass: String) {

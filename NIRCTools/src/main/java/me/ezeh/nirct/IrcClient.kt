@@ -6,7 +6,7 @@ import me.ezeh.nirct.protocol.IrcResponse
 import java.util.regex.Pattern
 
 
-class IrcClient(var connection: IrcConnection) {
+class IrcClient(val connection: IrcConnection) {
     constructor(ip: String, port: Int) : this(IrcConnection(ip, port))
 
     var channels: MutableList<String> = ArrayList()
@@ -55,22 +55,22 @@ class IrcClient(var connection: IrcConnection) {
 
     fun setNick(nick: String) {
         this.nick = nick
-        connection.sendText("NICK " + nick)
+        command("NICK", nick)
     }
 
     fun setName(name: String) {
         this.name = name
-        connection.sendText("NAME " + name)
+        command("NAME", name)
     }
 
     fun setUser(name: String) {
         this.user = name
-        connection.sendText("USER " + name)
+        commans("USER", name)
     }
 
     fun setPass(pass: String) {
         this.pass = pass.toCharArray()
-        connection.sendText("PASS " + pass)
+        command("PASS", pass)
     }
 
     fun setPass(pass: CharArray) {
@@ -80,24 +80,24 @@ class IrcClient(var connection: IrcConnection) {
             f += c
         }
         this.pass = pass
-        connection.sendText("PASS " + f)
+        command("PASS", f)
     }
 
     fun joinChannel(channel: String) {
         if (!channels.contains(channel))
             channels.add(channel)
-        connection.sendText("JOIN " + channel)
+        command("JOIN", channel)
 
     }
 
     fun leaveChannel(channel: String) {
         if (channels.contains(channel))
             channels.remove(channel)
-        connection.sendText("PART " + channel)
+        command("PART", channel)
     }
 
     fun sendMessage(msg: String, person: String) {
-        connection.sendText("PRIVMSG $person :$msg")
+        command("PRIVMSG", person, msg)
     }
 
     private fun listen() {

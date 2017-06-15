@@ -6,7 +6,7 @@
 
     <groupId>me.ezeh.nirct</groupId>
     <artifactId>NIRCTools</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
 
     <properties>
         <kotlin.version>1.1.2-4</kotlin.version>
